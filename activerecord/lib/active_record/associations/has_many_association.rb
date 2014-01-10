@@ -72,11 +72,11 @@ module ActiveRecord
         end
 
         def has_cached_counter?(reflection = reflection)
-          owner.attribute_present?(cached_counter_attribute_name(reflection))
+          cached_counter_attribute_name && owner.attribute_present?(cached_counter_attribute_name)
         end
 
         def cached_counter_attribute_name(reflection = reflection)
-          options[:counter_cache] || "#{reflection.name}_count"
+          options[:counter_cache]
         end
 
         def update_counter(difference, reflection = reflection)

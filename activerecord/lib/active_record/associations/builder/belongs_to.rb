@@ -20,7 +20,7 @@ module ActiveRecord::Associations::Builder
 
     def self.define_accessors(mixin, reflection)
       super
-      add_counter_cache_methods mixin
+      add_counter_cache_methods mixin                if reflection.options[:counter_cache]
     end
 
     private
